@@ -28,6 +28,7 @@ public class Bmi extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void findViews(){
+
         submit = findViewById(R.id.submit);
         field_height = findViewById(R.id.field_height);
         field_weight = findViewById(R.id.field_weight);
