@@ -12,28 +12,40 @@ import java.text.DecimalFormat;
 
 public class Bmi extends AppCompatActivity implements View.OnClickListener {
 
+
+        EditText field_height;
+        EditText field_weight;
+        TextView result ;
+        TextView suggest;
+        Button submit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmi);
-        Button submit = findViewById(R.id.submit);
+        findViews();
         submit.setOnClickListener(this);
+    }
+
+    private void findViews(){
+        submit = findViewById(R.id.submit);
+        field_height = findViewById(R.id.field_height);
+        field_weight = findViewById(R.id.field_weight);
+        result = findViewById(R.id.result);
+        suggest = findViewById(R.id.suggest);
+
     }
 
     @Override
     public void onClick(View v) {
         DecimalFormat df = new DecimalFormat("0.00");
 
-        EditText field_height = findViewById(R.id.field_height);
-        EditText field_weight = findViewById(R.id.field_weight);
 
         double height = Double.parseDouble(field_height.getText().toString()) / 100;
         double weight = Double.parseDouble(field_weight.getText().toString());
         double BMI = weight / (height * height);
 
-        TextView result = findViewById(R.id.result);
         result.setText("你的BMI值 = " + df.format(BMI));
-        TextView suggest = findViewById(R.id.suggest);
 
         if (BMI > 25)
             suggest.setText(R.string.advice_heavy);
